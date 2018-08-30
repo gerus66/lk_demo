@@ -1,0 +1,108 @@
+{% extends "lkforms/base.html" %}
+{% load i18n admin_urls admin_static admin_modify %}
+
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+{{ media }}
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+<link rel="stylesheet" type="text/css" href="/static/css/my.css" />{% endblock %}
+
+{% block coltype %}colM{% endblock %}
+
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+
+{% block breadcrumbs %}
+	<div class="breadcrumbs">
+		{% if not just_show %}
+		<a href="{% url 'index' %}">Начало</a>
+		&rsaquo; <a href="{% url 'lkforms:forms' %}">Мои формы</a>
+		{% endif %}
+		{% if just_show %}<a href="{{ back }}">Назад</a>{% endif %}
+		&rsaquo; {{ form.name }} ({{ form.full_name }})
+	</div>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+	<p class="at-info">{{ txt|safe }}</p>
+    {% if form.not_reversed and not just_show %}
+        <p class='atback'><img src="/static/img/attencion.png">Вы не сможете самостоятельно отменить регистрацию данной формы (но сможете изменить любые ответы на вопросы).</p>
+    {% endif %}
+    {% if form.id == 288 or form.id == 289 or form.id == 290 or form.id == 294 or form.id == 295 or form.id == 296 %}
+	    {% for rr in user.profile.all.0.regres_profile.all %}
+		    {% if rr.form.id == form.id and rr.is_checkin %}
+			<br><a href='/lk/forms/download/pdf/anketa'>Скачать заполненную анкету в pdf</a>
+			<br><b>Если Вы не можете скачать анкету, сохраните форму повторно (кнопка "Сохранить"). Если это не помогает, пишите на lksunc@gmail.com, приложив скриншот.</b>
+	        {% endif %}
+		{% endfor %}
+	{% endif %}</p>    
+	<form method="post">
+	{% csrf_token %}
+	<div>
+		{% if form.file %}
+			<div class='submit-row'>
+			 <p class="right"> <a href='/lk/forms/download/{{ form.file }}'><b>Прикрепленный файл</b></a></p>
+			</div>
+		{% endif %}
+		
+		<fieldset class="module">
+		
+			<div class='form-row'>
+				<div>{{ form.clarification|safe }}</div>
+			</div>
+			
+		{% for q in qns %}		
+		    {% for s in q.fmqn_qnlist.all %}{% if s.form.id == form.id and not s.is_priv %}
+			<div class="form-row {% cycle 'row1' '' %}">
+				<div>
+					<label>{% if just_show and q.owner %}<span class="at-info">new </span>{% endif %}
+						   {% if q.not_blank %}<span class="at-info">*</span>{% endif %}
+						   <span {% if q in wq %}class="at-info"{% endif %}>{% for fq in form.fmqn_fmlist.all %}{% if fq.question.id == q.id %}{{ fq.number }}{% endif %}{% endfor %}{% for fq in form.mfmqn_fmlist.all %}{% if fq.question.id == q.id %}{{ fq.number }}{% endif %}{% endfor %}{{ q.number }}. {{ q.name }}</span>
+						   <br><span class='mini'>{{ q.comms|safe }}</span>
+					</label>
+					{% if q.with_vars %}
+					    {% if q.multi_vars %}
+							{% for v in q.variant_list.all|dictsort:'name' %}
+							    <br><label><input type="checkbox" 
+							    {% for a in user.profile.all.0.answer_profile.all %}
+							        {% if a.question.id == q.id and '|'|add:v.name|add:'|' in a.answer %}checked="checked"{% endif %}
+							    {% endfor %}
+							    name="{{ q.id }}" 
+							    value="{{ v.name }}" 
+							    {% if just_show %}disabled{% endif %}>{{ v.name }}</label>
+							{% endfor %}
+						{% else %}
+							<br><select name="{{ q.id }}"/>
+							<option></option>
+							{% for v in q.variant_list.all|dictsort:'name' %}<option {% for a in user.profile.all.0.answer_profile.all %}{% if a.answer == v.name and a.question.id == v.question.id %}selected='selected'{% endif %} {% if just_show %}disabled{% endif %}{% endfor %}>{{ v.name }}</option>{% endfor %}</select>
+						{% endif %}
+					{% else %} 
+						<br><input class="vTextField" name="{{ q.id }}" value="{% for a in user.profile.all.0.answer_profile.all %}{% if a.question.id == q.id %}{{ a.answer }}{% endif %}{% endfor %}" type="text" {% if just_show %}readonly{% endif %}/>
+					{% endif %}
+				</div>
+			</div>
+			{% endif %}{% endfor %}
+		{% endfor %}
+			<div class='form-row'>
+				<div>
+					<span class='quiet-header'>{{ form.info|safe }}</span>
+				</div>
+			</div>
+		</fieldset>
+		{% if qns and not just_show %}
+		<div class="submit-row"><input type="submit" value="Сохранить" class="default" name="_save" /></div>
+		{% endif %}
+
+{% if just_show %}
+{% for q in qns %}
+<p>{{ q.number }}. {{ q.name }}</p> 
+{% endfor %}
+{% endif %}
+
+	</div>
+	</form>
+	<p class="at-info">{{ txt|safe }}</p>
+</div>
+{% endblock %}
