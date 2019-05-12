@@ -1,0 +1,54 @@
+﻿{% extends "lkforms/base.html" %}
+{% load i18n admin_urls admin_static admin_list %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}" />
+  {% if cl.formset %}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+  {% endif %}
+  {% if cl.formset or action_form %}
+    <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+  {% endif %}
+  {{ media.css }}
+  {% if not actions_on_top and not actions_on_bottom %}
+    <style>
+      #changelist table thead th:first-child {width: inherit}
+    </style>
+  {% endif %}
+  <link rel="stylesheet" type="text/css" href="/static/css/my.css" />
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+{{ media.js }}
+{% if action_form %}{% if actions_on_top or actions_on_bottom %}
+<script type="text/javascript">
+(function($) {
+    $(document).ready(function($) {
+        $("tr input.action-select").actions();
+    });
+})(django.jQuery);
+</script>
+{% endif %}{% endif %}
+{% endblock %}
+
+{% block bodyclass %}change-list{% endblock %}
+
+{% block breadcrumbs %}
+{% load i18n %}
+	<div class="breadcrumbs"><a href="/">{% trans 'Home' %}</a></div>
+{% endblock %}
+
+{% block coltype %}flex{% endblock %}
+
+{% block content %}
+<div id="content-main">
+{% load i18n %}
+	{% trans 'Вы попытались открыть несуществующую страницу или совершить некорректное действие.' %}
+	<br>{% trans 'К сожалению, у Вас ничего не вышло.' %}
+	<br>{% trans 'Если Вы уверены, что были правы в своем намерении, обратитесь в техподдержку' %} (lksunc@gmail.com)
+
+ <!--   <br><br><span class='at-info'>В течение вечера возможны временные проблемы с доступом, ведутся технические работы.</span> -->
+</div>
+{% endblock %}

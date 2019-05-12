@@ -1,0 +1,30 @@
+﻿{% extends "lkforum/base.html" %}
+{% load i18n admin_static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />
+<link rel="stylesheet" type="text/css" href="/static/css/my.css" />{% endblock %}
+
+{% block coltype %}colMS{% endblock %}   <!-- style -->
+
+{% block bodyclass %}dashboard{% endblock %}      <!-- style -->
+
+{% block breadcrumbs %}
+<div class="breadcrumbs"><a href="{% url 'index' %}">Начало</a>
+&rsaquo; Обратная связь</div>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+	<div class='module'>
+		<table>
+		<caption><a href="" class="section">Обратная связь</a></caption>
+		<tr><th><a href='{% url 'lkforum:topics' %}'>Вопросы в общем доступе</a></th><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr><th><a href='{% url 'lkforum:my_qns' %}'>Мои вопросы</a></th><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr><th><a href='{% url 'lkforum:new_qn' %}'>Задать вопрос</a></th><td>&nbsp;</td><td>&nbsp;</td></tr>
+		{% if count %}
+		<tr><th><a href='{% url 'lkforum:answers' %}'>Вопросы мне (ожидают ответа: {{ count }})</a></th><td>&nbsp;</td><td>&nbsp;</td></tr>
+		{% endif %}
+		</table>
+	</div>
+</div>
+{% endblock %}

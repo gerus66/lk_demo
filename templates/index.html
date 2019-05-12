@@ -1,0 +1,174 @@
+﻿{% extends "base.html" %}
+{% load i18n admin_static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />
+<link rel="stylesheet" type="text/css" href="/static/css/my.css" />{% endblock %}
+
+{% block coltype %}colMS{% endblock %}   <!-- style -->
+
+{% block bodyclass %}dashboard{% endblock %}      <!-- style -->
+
+{% block breadcrumbs %}{% endblock %}
+
+{% load i18n %}
+{% block content %}
+<div id="content-main">
+	<div class='module'>
+		<table>
+		<caption><a href="{% url 'lkforms:forms' %}" class="section">{% trans 'Мои формы' %}</a></caption>
+		<tr><th scope="row">
+        <a href="{% url 'lkforms:forms' %}"><span class='index-warn quiet'>
+<!--			<p>В этом разделе Вы можете:<br>
+			- <b>зарегистрироваться</b> на любую доступную Вам форму<br>
+			- <b>отменить регистрацию</b> в случае, если Вы изменили свое решение<br>
+			- <b>просматривать и менять свои ответы</b> в уже заполненных и еще активных формах<br>
+			- <b>видеть результаты</b> заполненных форм (после их публикации)<br>
+			- <b>посмотреть структуру доступности</b> всех активных на данный момент форм (большинство форм достпуно при условии (не)заполнения/определенного результата
+			других форм; если Вы не видите нужную форму в списке доступных, внимательно изучите эту структуру)<br>
+			</p> -->
+        <p>{% if br %}
+           <b>У вас заполнена базовая анкета и выбрана текущая категория:</b>
+              {% for b in br %}
+                <br><img src="/static/admin/img/icon-yes.gif">{{ b.name }}
+              {% endfor %}
+           {% else %}
+        <b>Начните с заполнения базовой формы (анкеты) в данном разделе.</b>
+        <br>Базовые анкеты определяют различные категории пользователей - вам необходимо выбрать свою (только одну) и заполнить ее. 
+        <br>Остальные формы станут доступны после и будут зависеть от категории, которую вы выберете.
+	<br>Будьте внимательны - вы <ins>не сможете самостоятельно изменить свою категорию</ins>.
+        <br><br>Обратите внимание, если вы не заполните ни одной базовой формы (хотя бы "Анкеты гостя"), <ins>ваш профиль будет удален через 6 месяцев после регистрации</ins>.
+        {% endif %}
+        </p>
+		</span></a></th><td>&nbsp;</td><td>&nbsp;</td></tr>
+		</table>
+	</div>
+	<div class='module'>
+		<table>
+		<caption><a href="{% url 'lkforum:app_index' %}" class="section">{% trans 'Обратная связь' %}</a></caption>
+		<tr><th scope="row">
+        <span class='index-warn quiet'>
+<!--			<p>В этом разделе Вы можете:<br>
+			- <b>задать вопрос</b>, при желании сделав его приватным (вопрос и ответ видите только Вы) или общедоступным (вопрос и ответ видят все пользователи, в том числе не зарегистрированные в ЛК)<br>
+			- <b>изменить приватность</b> уже заданного вопроса (только до того, как на него будет получен ответ)<br>
+			- <b>просмотривать вопросы</b>, помеченные другими пользователями как общедоступные, <b>после того, как на них будет получен ответ</b><br>
+			- <b>просматривать все свои вопросы и ответы</b><br>
+			{% if user.receiver_profile.all %}
+			- <b>отвечать</b> на адресованные Вам вопросы<br>
+			- <b>изменять свои ответы</b> в любой момент<br>
+			{% endif %}
+			</p>   -->
+       <p><b>Если у вас есть вопрос, прочитайте <a href="/lk/faq">FAQ</a>.
+       <br><a href="{% url 'lkforum:app_index' %}">Если это не помогло, задайте его здесь.</a></b>
+       <br>Вы так же можете написать нам:
+           <br><a href="mailto:priem@internat.msu.ru">priem@internat.msu.ru</a> - новый прием в СУНЦ
+           <br><a href="mailto:zash-sunc@mail.ru">zash-sunc@mail.ru</a> - заочная школа, дистанционные курсы
+           <br><a href="mailto:lksunc@gmail.com">lksunc@gmail.com</a> - техподдержка
+	   <br><br>Пожалуйста, обращайтесь с техническими вопросами (не могу найти/открыть/поменять/отменить) в техподдержку, 
+           а со всеми остальными - в соответствующую тему. 
+           <br><br><ins>Замечания от техподдержки</ins> 
+           <br>- пишите с почты, указанной при регистрации, иначе мы не сможем вас идентифицировать
+           <br>- ваши проблемы будут решаться быстрее, если вы будете прикладывать к своим письмам скриншоты происходящего
+       </p>
+
+		</span></th><td>&nbsp;</td><td>&nbsp;</td></tr>
+		</table>
+	</div>
+	{% for g in user.groups.all %}{% if g.id == 1 %}
+	<div class='module'>
+		<table>
+		<caption><a href="{% url 'lkmoderation:app_index' %}" class="section">Модерация</a></caption>
+		<tr><th scope="row">
+        <span class='mini quiet'>
+			<p>В этом разделе Вы можете:<br>
+			- <b>принимать решения типа да/нет</b> в ответ на запросы модерации форм и вопросов<br>
+			- <b>оставлять комментарии</b> к своим решениям<br>
+			- <b>видеть решения и комментарии</b> всех модераторов<br>
+			- при модерации <b>просматривать внешний вид</b> как текущего (при наличии), так и нового (запрашиваемого к модерации) состояния формы<br>
+			- при модерации <b>видеть списки редакторов и читателей формы</b>, как текущие, так и запрашиваемые к модерации<br>
+			</p>
+			</span></th><td>&nbsp;</td><td>&nbsp;</td></tr>
+		</table>
+	</div>	
+	{% endif %}
+	{% if g.id == 5 and not user.use_forms.all %}
+	<div class='module'>
+		<table>
+		<caption><a href="{% url 'lkmoderation:readform' %}" class="section">Дополнительные возможности</a></caption>
+		<tr><th scope="row">
+        <span class='mini quiet'>
+			<p>В этом разделе Вы можете:<br>
+			- <b>просматривать внешний вид</b> доступных Вам форм<br>
+			- <b>скачивать в txt</b> доступные Вам формы<br>
+			</p>
+		</span></th><td>&nbsp;</td><td>&nbsp;</td></tr>
+		</table>
+	</div>	
+	{% endif %}{% endfor %}
+	{% if user.use_forms.all %}
+	<div class='module'>
+		<table>
+		<caption><a href="" class="section">Дополнительные возможности</a></caption>
+		<tr><th scope="row">
+        <span class='mini quiet'>
+			<p>Здесь будут инструкции для простых пользователей</p>
+		</span></th><td>&nbsp;</td><td>&nbsp;</td></tr>
+		</table>
+	</div>	
+	{% endif %}
+
+	{% if not user.profile.all.0.regres_profile.count %}
+	<div class="module">
+		<p></p>
+	</div>
+	{% endif %}
+</div>
+
+
+    
+{% endblock %}
+
+{% block sidebar %}
+<div id="content-related">
+    <div class="module" id="recent-actions-module">
+        <h2><a href="/lk/faq"><img src="/static/admin/img/icon-unknown.gif"> FAQ</a></h2>
+    </div><br>
+    <div class="module" id="recent-actions-module">
+        <table>
+        <caption>{% trans 'Мой профиль' %}</caption>
+         <tbody>      
+		<tr><th><span class='mini quiet'>{% trans 'Логин' %}</span>
+		<br/><span class='index-warn'>{{ user.username }}</span></th><td></td><td></td></tr>
+		<tr><th><span class='mini quiet'>{% trans 'Email' %}</span>
+		<br/><span class='index-warn'>{{ user.email }}</span></th><td></td><td></td></tr>
+		<tr><th><span class='mini quiet'>{% trans 'Фамилия' %}</span>
+		<br/><span class='index-warn'>{{ user.profile.all.0.sname }}</span></th><td></td><td></td></tr>
+		<tr><th><span class='mini quiet'>{% trans 'Имя' %}</span>
+		<br/><span class='index-warn'>{{ user.profile.all.0.name }}</span></th><td></td><td></td></tr>
+		<tr><th><span class='mini quiet'>{% trans 'Отчество' %}</span>
+		<br/><span class='index-warn'>{{ user.profile.all.0.pname }}</span></th><td></td><td></td></tr>
+		<tr><th><span class='mini quiet'>{% trans 'Пол' %}</span>
+		<br/><span class='index-warn'>{{ user.profile.all.0.get_sex_display }}</span></th><td></td><td></td></tr>
+		<tr><th><span class='mini quiet'>{% trans 'Дата рождения' %}</span>
+		<br/><span class='index-warn'>{{ user.profile.all.0.bday }}</span></th><td></td><td></td></tr>
+		{% if user.groups.count %}
+		<tr><th><span class='mini quiet'>Административные права</span>
+		{% for g in user.groups.all %}
+		<br/><span class='index-warn'>{{ g }}</span>
+		{% endfor %}
+		{% if user.is_superuser %}<br><span class='index-warn'>Главный администратор</span>{% endif %}
+		</th><td></td><td></td></tr>{% endif %}
+          </tbody> 
+         </table>
+    </div>
+	   <div class="module" id="recent-actions-module">
+        <table>
+        <caption>{% trans 'Мои документы' %}</caption>
+         <tbody>
+		<tr><th><span class='mini quiet'>Здесь Вы можете скачать все свои дипломы и сертификаты, начиная с 2018 года.</span>
+		<br/><span class='index-warn'>{{ user.profile.all.0.diploms|safe }}</span></th><td></td><td></td></tr>
+		</th><td></td><td></td></tr>
+          </tbody>
+         </table>
+    </div>
+</div>
+{% endblock %}

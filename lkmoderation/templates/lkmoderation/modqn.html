@@ -1,0 +1,84 @@
+﻿{% extends "lkforms/base.html" %}
+{% load i18n admin_urls admin_static admin_list %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}" />
+  {% if cl.formset %}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+  {% endif %}
+  {% if cl.formset or action_form %}
+    <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+  {% endif %}
+  {{ media.css }}
+  {% if not actions_on_top and not actions_on_bottom %}
+    <style>
+      #changelist table thead th:first-child {width: inherit}
+    </style>
+  {% endif %}
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+{{ media.js }}
+{% if action_form %}{% if actions_on_top or actions_on_bottom %}
+<script type="text/javascript">
+(function($) {
+    $(document).ready(function($) {
+        $("tr input.action-select").actions();
+    });
+})(django.jQuery);
+</script>
+{% endif %}{% endif %}
+{% endblock %}
+
+{% block bodyclass %}change-list{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs"><a href="{% url 'index' %}">Начало</a>
+&rsaquo; <a href="{% url 'lkmoderation:app_index' %}">Модерация</a>
+&rsaquo; Вопросы для модерации</div>
+{% endblock %}
+
+{% block coltype %}flex{% endblock %}
+
+{% block content %}
+<div id="content-main">
+	<div class="module" id="changelist">
+		<form id="changelist-form" method="post">
+		{% csrf_token %}
+			<div class="results">
+				<table id="result_list">
+				<thead>
+				<tr><th scope="col"><div class="text"><span>Вопрос</span></div><div class="clear"></div></th>
+				<th scope="col"><div class="text"><span>Тип запроса</span></div><div class="clear"></div></th>
+				<th scope="col"><div class="text"><span>Привязан к формам</span></div><div class="clear"></div></th>
+				<th scope="col"><div class="text"><span>Привязан к формам для модерации</span></div><div class="clear"></div></th>
+				<th scope="col"><div class="text"><span>Автор запроса</span></div><div class="clear"></div></th>
+				<th scope="col"><div class="text"><span>Принять решение</span></div><div class="clear"></div></th>
+				<th scope="col"><div class="text"><span>Добавить комментарий</span></div><div class="clear"></div></th></tr>
+				</thead>
+				<tbody>
+				{% for mr in mrs %}
+					<tr class="{% cycle 'row1' 'row2' %}"><th>{{ mr.question.name }}</th>
+					<td>{{ mr.get_type_display }}</td>
+					<td>{% for fq in mr.question.fmqn_qnlist.all %}{{ fq.form.id }}, {% endfor %}</td>
+					<td>{% for fq in mr.question.mfmqn_qnlist.all %}{{ fq.form.id }}, {% endfor %}</td>
+					<td>{{ mr.author.profile.all.0.sname }} {{ mr.author.profile.all.0.name }} {{ mr.author.profile.all.0.pname }}</td>
+					<td>{% if mr.passed == 0 %}
+						<select name="{{ mr.id }}_passed"/><option></option><option>yes</option><option>no</option></select>
+						{% else %}{{ mr.get_passed_display }} ({{ mr.moderator.profile.all.0.sname }} {{ mr.moderator.profile.all.0.name }} {{ mr.moderator.profile.all.0.pname }}){% endif %}</td>
+					<td>{% if mr.passed == 0 %}
+					    {{ mr.comms|safe }}<br>
+						<textarea name="{{ mr.id }}_comms" cols="100" rows="3"></textarea>
+						{% else %}{{ mr.comms|safe }}{% endif %}</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+				</table>
+				<div class="submit-row"><input type="submit" value="Сохранить изменения" class="default" name="_save" /></div>
+			</div>
+		</form>
+    </div>
+</div>
+{% endblock %}

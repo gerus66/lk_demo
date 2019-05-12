@@ -1,0 +1,42 @@
+﻿{% extends "lkforms/base.html" %}
+{% load i18n %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/login.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/my.css" />
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="/lk/">{% trans 'Начало' %}</a>
+&rsaquo; {% trans 'Регистрация' %}
+</div>
+{% endblock %}
+
+{% block content %}
+<body class="login">
+	<div id="mycontainer">
+		<div id="content" class="colM">
+			<div id="content-main">
+				
+<p style="text-align: center;"><strong>{% trans 'При регистрации обратите внимание на' %}</strong></p>
+
+ - <b>{% trans 'электронную почту' %}</b>
+<br>{% trans 'На неё придет автоматическое письмо со ссылкой для завершения регистрации. ' %}
+<br>{% trans 'Также на неё будут приходить все информационные письма и ответы на задаваемые вами вопросы.' %}<br><br> 
+
+ - <b>{% trans 'персональные данные (ФИО и дата рождения)' %}</b>
+<br>{% trans 'В дальнейшем вы не сможете их самостоятельно изменить. Корректные персональные данные необходимы для идентификации пользователя при участии в любых мероприятиях СУНЦ.' %}<br><br>
+
+<p><img src="/static/img/attencion.png">{% trans 'Если Вы уже регистрировались, но что-то пошло не так' %} -
+<br>{% trans 'забыли пароль или логин, указали неверные данные, заполнили неправильную анкету и т.п. - не пытайтесь регистрироваться заново, пожалуйста. Напишите в техподдержку (<i><a href="mailto:lksunc@gmail.com">lksunc@gmail.com</a></i>), мы обязательно что-нибудь придумаем.' %} </p>
+	
+<p style="text-align: center;"><a href='/accounts/register'> 
+{% trans 'Продолжить регистрацию' %}</a></p>
+			</div>
+			<br class="clear" />
+		</div>
+	</div>
+</body>
+{% endblock %}

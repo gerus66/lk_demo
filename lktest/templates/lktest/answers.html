@@ -1,0 +1,112 @@
+﻿{% extends "lkforms/base.html" %}
+{% load i18n admin_urls admin_static admin_list %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}" />
+  {% if cl.formset %}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+  {% endif %}
+  {% if cl.formset or action_form %}
+    <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+  {% endif %}
+  {{ media.css }}
+  {% if not actions_on_top and not actions_on_bottom %}
+    <style>
+      #changelist table thead th:first-child {width: inherit}
+    </style>
+  {% endif %}
+  <link rel="stylesheet" type="text/css" href="/static/css/my.css" />
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+{{ media.js }}
+{% if action_form %}{% if actions_on_top or actions_on_bottom %}
+<script type="text/javascript">
+(function($) {
+    $(document).ready(function($) {
+        $("tr input.action-select").actions();
+    });
+})(django.jQuery);
+</script>
+{% endif %}{% endif %}
+{% endblock %}
+
+{% block bodyclass %}change-list{% endblock %}         <!-- style -->
+
+{% block breadcrumbs %}
+<div class="breadcrumbs"><a href="{% url 'index' %}">Начало</a>
+&rsaquo; <a href="{% url 'lkforum:app_index' %}">Обратная связь</a> 
+&rsaquo; Вопросы мне</div>
+{% endblock %}
+
+{% block coltype %}flex{% endblock %}       <!-- style -->
+
+{% block content %}
+<div id="content-main">
+    		    <p>Новые вопросы</p>
+				<p>{{ txt|safe }}</p>
+    <div class="module" id="changelist">		
+        <form id="changelist-form" method="post">
+	    {% csrf_token %}
+		<div class="results">
+			<table id="result_list">
+			<thead>
+				<tr><th scope="col"><div class="text"><span>Вопрос</span></div><div class="clear"></div></th>
+				    <th scope="col"><div class="text"><span>Тема</span></div><div class="clear"></div></th>
+					<th scope="col"><div class="text"><span>Адресат</span></div><div class="clear"></div></th></tr>
+			</thead>
+			<tbody>				
+			{% for qa in qas %}{% if qa.answer == '' %}
+				<tr class="{% cycle 'row1' 'row2' %}" >
+				    <td>{{ qa.id }}. {{ qa.question }}
+					<br>{{ qa.created }}
+					<br>{{ qa.author.profile.all.0.sname }} {{ qa.author.profile.all.0.name }} {{ qa.author.profile.all.0.pname }},  
+					    <i>{% if qa.is_private == True %} Личный {% else %} Общедоступный {% endif %}</i>
+					<br><a href="{% url 'lkforum:answer' qa.id %}">Ответить</a></td>		
+					<td>
+						<select name="t_{{ qa.id }}">
+						{% for t in ts %} <option {% if t.name == qa.topic.name %} selected {% endif %}>{{ t.name }}</option>{% endfor %}
+						</select>
+					</td>
+					<td>
+						<select name="rc_{{ qa.id }}">
+						{% for rc in rcs %} <option {% if rc == qa.receiver %} selected {% endif %}>{{ rc.user.profile.all.0.sname }} {{ rc.user.profile.all.0.name }} {{ rc.user.profile.all.0.pname }},  
+					    {{ rc.post }}</option>{% endfor %}
+						</select>
+					</td>
+				</tr>
+			{% endif %}{% endfor %}
+			</tbody>
+			</table>
+		</div>
+		<div class="submit-row"><input type="submit" name="_save" class="default" value="Сохранить изменения"/></div>
+        </form>	
+	</div>
+			<br><br><p>Вопросы, на которые Вы ответили</p>
+    <div class="module" id="changelist">	
+
+		<div class="results">
+			<table id="result_list">
+			<thead>
+				<tr><th scope="col"><div class="text"><span>Вопрос</span></div><div class="clear"></div></th>
+				    <th scope="col"><div class="text"><span>Ответ</span></div><div class="clear"></div></th></tr>
+			</thead>
+			<tbody>				
+			{% for qa in qas %}{% if qa.answer != '' %}
+				<tr class="{% cycle 'row1' 'row2' %}" >
+				    <td>{{ qa.id }}. {{ qa.question }}<br>{{ qa.created }} <a href="{% url 'lkforum:topic' qa.topic.id %}">{{ qa.topic.name }}</a>
+					<br>{{ qa.author.profile.all.0.sname }} {{ qa.author.profile.all.0.name }} {{ qa.author.profile.all.0.pname }},  
+					    <i>{% if qa.is_private == True %} Личный {% else %} Общедоступный {% endif %}</i>
+					<br><a href="{% url 'lkforum:answer' qa.id %}">Изменить ответ</a></td>
+					<td>{{ qa.answer|safe }}</td>
+				</tr>
+			{% endif %}{% endfor %}
+			</tbody>
+			</table>
+		</div>
+
+    </div>
+</div>
+{% endblock %}

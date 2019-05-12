@@ -1,0 +1,723 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-29 14:46+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin.py:23
+msgid "Activate users"
+msgstr ""
+
+#: admin.py:43
+msgid "Re-send activation emails"
+msgstr ""
+
+#: forms.py:15
+msgid "Логин"
+msgstr "Login"
+
+#: forms.py:15
+msgid ""
+"Это поле может содержать только латинские буквы, цифры и @/./+/-/_ символы."
+msgstr ""
+
+#: forms.py:16
+msgid "E-mail"
+msgstr ""
+
+#: forms.py:17
+msgid "Фамилия"
+msgstr "Last Name"
+
+#: forms.py:18
+msgid "Имя"
+msgstr "First (given) name"
+
+#: forms.py:18
+msgid ""
+"ФИО следует указывать в точности, как в документе, удостоверяющем личность"
+msgstr "The names should be specified exactly as in the identity document"
+
+#: forms.py:19
+msgid "Отчество"
+msgstr "Middle name / Patronymic"
+
+#: forms.py:19
+msgid "если отчество отсутствует, напишите в этой графе - нет"
+msgstr "If you have no middle name or patronymic, write 'NO' in the box"
+
+#: forms.py:20
+msgid "Дата рождения (ГГГГ-ММ-ДД)"
+msgstr "Date of birth (YYYY-MM-DD)"
+
+#: forms.py:20
+msgid "Неверный формат даты."
+msgstr "Invalid date format"
+
+#: forms.py:21
+msgid "жен"
+msgstr "female"
+
+#: forms.py:21
+msgid "муж"
+msgstr "male"
+
+#: forms.py:21
+msgid "Пол"
+msgstr "Sex"
+
+#: forms.py:22
+msgid "интернет"
+msgstr "The Ineternet"
+
+#: forms.py:22
+msgid "учитель"
+msgstr "a teacher"
+
+#: forms.py:22
+msgid "знакомый"
+msgstr "a friend"
+
+#: forms.py:22
+msgid "email письмо"
+msgstr "an email"
+
+#: forms.py:22
+msgid "журнал \"Квант\""
+msgstr "'Quant' journal"
+
+#: forms.py:22
+msgid "журнал \"Потенциал\""
+msgstr "'Potential' journal"
+
+#: forms.py:22
+msgid "ВЗМШ"
+msgstr " All-Russian Correspondence Multidisciplinary School"
+
+#: forms.py:22
+msgid "другое"
+msgstr " Other"
+
+#: forms.py:22
+msgid "Откуда Вы или Ваши родители узнали о нашем сайте?"
+msgstr "Where did you or your parents learn about our site?"
+
+#: forms.py:23
+msgid "Если Вы выбрали \"Другое\", уточните, пожалуйста:"
+msgstr "If you chose 'Other', please specify:"
+
+#: forms.py:24
+msgid "Пароль"
+msgstr "Password"
+
+#: forms.py:25
+msgid "Пароль (еще раз)"
+msgstr "Password (repeat)"
+
+#: forms.py:37
+msgid "Пароли не совпадают."
+msgstr "Password does not match."
+
+#: forms.py:42
+msgid "Пользователь с таким email уже зарегистрирован."
+msgstr ""
+"This email address is already in use. Please supply a different email "
+"address."
+
+#: forms.py:47
+msgid "Пользователь с таким логином уже существует."
+msgstr "A user with that login already exists."
+
+#: models.py:187
+msgid "user"
+msgstr ""
+
+#: models.py:188
+msgid "activation key"
+msgstr ""
+
+#: models.py:193
+msgid "registration profile"
+msgstr ""
+
+#: models.py:194
+msgid "registration profiles"
+msgstr ""
+
+#: templates/admin/auth/app_index.html:7
+#: templates/admin/lkregistration/app_index.html:7
+#: templates/lkregistration/password_reset_complete.html:6
+#: templates/lkregistration/password_reset_confirm.html:6
+#: templates/lkregistration/password_reset_done.html:6
+#: templates/lkregistration/password_reset_form.html:6
+msgid "Home"
+msgstr ""
+
+#: templates/admin/auth/app_index.html:10
+#: templates/admin/auth/app_index.html:26
+#: templates/admin/lkregistration/app_index.html:10
+#: templates/admin/lkregistration/app_index.html:26
+#, python-format
+msgid "%(name)s"
+msgstr ""
+
+#: templates/admin/auth/app_index.html:25
+#: templates/admin/lkregistration/app_index.html:25
+#, python-format
+msgid "Models in the %(name)s application"
+msgstr ""
+
+#: templates/admin/auth/app_index.html:38
+#: templates/admin/lkregistration/app_index.html:38
+msgid "Add"
+msgstr ""
+
+#: templates/admin/auth/app_index.html:44
+#: templates/admin/lkregistration/app_index.html:44
+msgid "Change"
+msgstr ""
+
+#: templates/admin/auth/app_index.html:54
+#: templates/admin/lkregistration/app_index.html:54
+msgid "You don't have permission to edit anything."
+msgstr ""
+
+#: templates/lkregistration/activate.html:15
+#: templates/lkregistration/activation_complete.html:15
+msgid "Ваша учетная запись активирована."
+msgstr "Your account is now activated."
+
+#: templates/lkregistration/activate.html:16
+#: templates/lkregistration/activation_complete.html:16
+msgid "Заходите на сайт, используя указанные при регистрации логин и пароль."
+msgstr "You can log in."
+
+#: templates/lkregistration/activation_email_subject.txt:3
+msgid "Активация аккаунта"
+msgstr "Account activation on"
+
+#: templates/lkregistration/general.html:12
+#: templates/lkregistration/instruction.html:12
+#: templates/lkregistration/registration_form.html:12
+msgid "Начало"
+msgstr "Home"
+
+#: templates/lkregistration/general.html:13
+#: templates/lkregistration/login.html:58
+msgid "Нужен ли мне личный кабинет?"
+msgstr "About Personal Cabinet"
+
+#: templates/lkregistration/general.html:24
+msgid "Создание своего Личного кабинета позволит вам"
+msgstr ""
+
+#: templates/lkregistration/general.html:26
+msgid ""
+"подавать заявки на участие в различных проектах и мероприятиях, проводимых "
+"СУНЦ МГУ: Летние школы, экзамены, Интернет-олимпиады, Заочная школа и другие"
+msgstr ""
+
+#: templates/lkregistration/general.html:27
+msgid ""
+"участвовать в отборочном туре Интернет-олимпиады, в заочном отборочном "
+"тестировании в Заочную школу или перед экзаменами и т.п."
+msgstr ""
+
+#: templates/lkregistration/general.html:28
+msgid "получать электронные дипломы, свидетельства и т.п."
+msgstr ""
+
+#: templates/lkregistration/general.html:29
+msgid ""
+"получать более детальную информацию о своих результатах, по сравнению с "
+"публикуемой на сайте"
+msgstr ""
+
+#: templates/lkregistration/general.html:30
+msgid "подтверждать свой приезд в Летнюю школу и на учебу в СУНЦ МГУ и т.д."
+msgstr ""
+
+#: templates/lkregistration/general.html:31
+msgid ""
+"задавать вопросы различной тематики и получать ответы на указанную при "
+"регистрации электронную почту"
+msgstr ""
+
+#: templates/lkregistration/general.html:32
+msgid "получать на электронную почту рассылки и напоминания по выбранным темам"
+msgstr ""
+
+#: templates/lkregistration/general.html:34
+msgid "Хочу зарегистрироваться"
+msgstr "I want to register"
+
+#: templates/lkregistration/instruction.html:13
+#: templates/lkregistration/login.html:52
+#: templates/lkregistration/registration_form.html:13
+#: templates/lkregistration/registration_form.html:31
+msgid "Регистрация"
+msgstr "Registration"
+
+#: templates/lkregistration/instruction.html:23
+msgid "При регистрации обратите внимание на"
+msgstr ""
+
+#: templates/lkregistration/instruction.html:25
+msgid "электронную почту"
+msgstr ""
+
+#: templates/lkregistration/instruction.html:26
+msgid ""
+"На неё придет автоматическое письмо со ссылкой для завершения регистрации. "
+msgstr ""
+
+#: templates/lkregistration/instruction.html:27
+msgid ""
+"Также на неё будут приходить все информационные письма и ответы на "
+"задаваемые вами вопросы."
+msgstr ""
+
+#: templates/lkregistration/instruction.html:29
+msgid "персональные данные (ФИО и дата рождения)"
+msgstr ""
+
+#: templates/lkregistration/instruction.html:30
+msgid ""
+"В дальнейшем вы не сможете их самостоятельно изменить. Корректные "
+"персональные данные необходимы для идентификации пользователя при участии в "
+"любых мероприятиях СУНЦ."
+msgstr ""
+
+#: templates/lkregistration/instruction.html:32
+msgid "Если Вы уже регистрировались, но что-то пошло не так"
+msgstr ""
+
+#: templates/lkregistration/instruction.html:33
+msgid ""
+"забыли пароль или логин, указали неверные данные, заполнили неправильную "
+"анкету и т.п. - не пытайтесь регистрироваться заново, пожалуйста. Напишите в "
+"техподдержку (<i><a href=\"mailto:lksunc@gmail.com\">lksunc@gmail.com</a></"
+"i>), мы обязательно что-нибудь придумаем."
+msgstr ""
+
+#: templates/lkregistration/instruction.html:36
+msgid "Продолжить регистрацию"
+msgstr "Next"
+
+#: templates/lkregistration/login.html:18
+msgid "Please correct the error below."
+msgstr ""
+
+#: templates/lkregistration/login.html:18
+msgid "Please correct the errors below."
+msgstr ""
+
+#: templates/lkregistration/login.html:38
+msgid "Password:"
+msgstr ""
+
+#: templates/lkregistration/login.html:46
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: templates/lkregistration/login.html:50
+#: templates/lkregistration/password_reset_complete.html:19
+msgid "Log in"
+msgstr ""
+
+#: templates/lkregistration/login.html:53
+msgid "Забыли пароль или логин?"
+msgstr "Forgotten your password or login?"
+
+#: templates/lkregistration/login.html:59
+msgid "техподдержка: lksunc@gmail.com"
+msgstr "techsupport: lksunc@gmail.com"
+
+#: templates/lkregistration/logout.html:15
+msgid "Спасибо за внимание!"
+msgstr "Successfully logged out."
+
+#: templates/lkregistration/logout.html:16
+msgid "Заходите еще"
+msgstr "Log in"
+
+#: templates/lkregistration/password_reset_complete.html:7
+#: templates/lkregistration/password_reset_done.html:7
+#: templates/lkregistration/password_reset_form.html:7
+#: templates/lkregistration/password_reset_form.html:11
+#: templates/lkregistration/password_reset_form.html:15
+msgid "Password reset"
+msgstr ""
+
+#: templates/lkregistration/password_reset_complete.html:11
+#: templates/lkregistration/password_reset_complete.html:15
+msgid "Password reset complete"
+msgstr ""
+
+#: templates/lkregistration/password_reset_complete.html:17
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr ""
+
+#: templates/lkregistration/password_reset_confirm.html:7
+msgid "Password reset confirmation"
+msgstr ""
+
+#: templates/lkregistration/password_reset_confirm.html:17
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: templates/lkregistration/password_reset_confirm.html:21
+msgid "New password:"
+msgstr ""
+
+#: templates/lkregistration/password_reset_confirm.html:23
+msgid "Confirm password:"
+msgstr ""
+
+#: templates/lkregistration/password_reset_confirm.html:24
+msgid "Change my password"
+msgstr ""
+
+#: templates/lkregistration/password_reset_confirm.html:29
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+
+#: templates/lkregistration/password_reset_done.html:15
+msgid ""
+"We've emailed you instructions for setting your password. You should be "
+"receiving them shortly."
+msgstr ""
+
+#: templates/lkregistration/password_reset_done.html:17
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+
+#: templates/lkregistration/password_reset_form.html:17
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+
+#: templates/lkregistration/password_reset_form.html:21
+msgid "Email address:"
+msgstr ""
+
+#: templates/lkregistration/password_reset_form.html:21
+msgid "Reset my password"
+msgstr ""
+
+#: templates/lkregistration/registration_complete.html:15
+msgid "Осталось еще немного."
+msgstr "Activation email sent."
+
+#: templates/lkregistration/registration_complete.html:16
+msgid "На ваш e-mail отправленно письмо."
+msgstr "Please check your email to complete the registration process."
+
+#: templates/lkregistration/registration_complete.html:17
+msgid ""
+"Для подтверждения регистрации, необходимо пройти по указанной в письме "
+"ссылке в течение ДВУХ суток."
+msgstr ""
+
+#: templates/lkregistration/registration_form.html:23
+msgid "Пожалуйста, исправьте ошибки ниже."
+msgstr "Please correct the errors below."
+
+#: templates/lkregistration/registration_form.html:31
+msgid "все поля обязательны для заполнения"
+msgstr "all fields are required"
+
+#: templates/lkregistration/registration_form.html:44
+msgid ""
+"Нажимая кнопку \"Зарегистрироваться\", Вы соглашаетесь с Положением об "
+"обработке персональных данных в МГУ имени М.В. Ломоносова. <br>С полным "
+"текстом положения об обработке персональных данных в МГУ имени М.В. "
+"Ломоносова можно ознакомиться на странице"
+msgstr ""
+"By clicking on \"Submit\", you agree to the Regulation on the processing of "
+"personal data at the Lomonosov MSU. <br> The full text of the Regulation on the "
+"processing of personal data at the Lomonosov MSU can be found on the page "
+
+#: templates/lkregistration/registration_form.html:46
+msgid "Зарегистрироваться"
+msgstr "Submit"
+
+#: templates/lkregistration/start_working.html:15
+msgid "Начало работы в Личном кабинете"
+msgstr "How to start"
+
+#: templates/lkregistration/start_working.html:21
+msgid ""
+"При входе в свой Личный кабинет Вы попадаете на главную страницу - «Начало». "
+"Она состоит из трех основных разделов:"
+msgstr ""
+
+#: templates/lkregistration/start_working.html:22
+msgid "Мои формы (обсуждается подробно ниже)"
+msgstr ""
+
+#: templates/lkregistration/start_working.html:23
+msgid "Обратная связь (вопросы пользователей)"
+msgstr ""
+
+#: templates/lkregistration/start_working.html:24
+msgid ""
+"Мой профиль (данные, указанные при регистрации - не подлежат "
+"самостоятельному редактированию, при необходимости обращайтесь в "
+"техподдержку)"
+msgstr ""
+
+#: templates/lkregistration/start_working.html:25
+msgid "Раздел <b>«Мои формы»</b> состоит из трёх основных подразделов:"
+msgstr ""
+
+#: templates/lkregistration/start_working.html:26
+#, fuzzy
+#| msgid "Продолжить регистрацию"
+msgid "Формы, доступные для регистрации"
+msgstr "Next"
+
+#: templates/lkregistration/start_working.html:27
+msgid "Структура доступности активных на данный момент форм"
+msgstr ""
+
+#: templates/lkregistration/start_working.html:28
+msgid "Принятые формы (заполненные Вами анкеты и заявления)"
+msgstr ""
+
+#: templates/lkregistration/start_working.html:29
+msgid ""
+"Навигация между разделами Личного кабинета осуществляется с помощью меню, "
+"расположенного в верхней части страниц:  <span style=\"font-size: 11px;"
+"\">Начало>…</span> ."
+msgstr ""
+
+#: templates/lkregistration/start_working.html:31
+msgid "Выбор \"управляющей\" анкеты"
+msgstr ""
+
+#: templates/lkregistration/start_working.html:32
+msgid ""
+"Первоначально в разделе <b>«Формы, доступные для регистрации»</b> Вам "
+"доступно несколько анкет, определяющих различные категории пользователей - "
+"так называемые \"управляющие\" анкеты. Из них необходимо выбрать ту, которая "
+"соответствует Вашей ситуации (только одну). "
+msgstr ""
+
+#: templates/lkregistration/start_working.html:33
+msgid ""
+"Обратите особое внимание на номер класса и <i>учебный год</i> - они могут не "
+"совпадать с текущими, но должны соответствовать действительности."
+msgstr ""
+
+#: templates/lkregistration/start_working.html:35
+msgid ""
+"После внесения ответов на все обязательные вопросы нажмите \"Сохранить\" в "
+"конце формы. Если всё в порядке, то на текущей странице Вы увидите надпись "
+"\"Изменения сохранены\", а также в подразделе «Принятые формы» появится "
+"название-ссылка на заполненную анкету. "
+msgstr ""
+
+#: templates/lkregistration/start_working.html:36
+msgid ""
+"Вы можете изменять свои ответы в управляющей анкете, однако не сможете "
+"самостоятельно отменить регистрацию (в отличие от всех остальных форм)."
+msgstr ""
+
+#: templates/lkregistration/start_working.html:37
+msgid ""
+"Если Вы перепутали и заполнили не ту управляющую анкету</b>, пишите в службу "
+"техподдержки. "
+msgstr ""
+
+#: templates/lkregistration/start_working.html:39
+msgid "Работа с формами"
+msgstr ""
+
+#: templates/lkregistration/start_working.html:41
+msgid ""
+"После заполнения управляющей анкеты Вам станут доступны формы (анкеты, "
+"заявления и т.п.), соответствующие выбранному статусу. "
+msgstr ""
+
+#: templates/lkregistration/start_working.html:42
+msgid ""
+"Пожалуйста, внимательно читайте \"Полное название формы\" и \"Пояснение к "
+"форме\", прежде чем заполнять ее."
+msgstr ""
+
+#: templates/lkregistration/start_working.html:43
+msgid ""
+"Если Вы не можете найти необходимую форму, обратитесь к разделу "
+"<b>«Структура доступности активных на данный момент форм»</b>. Он позволяет "
+"просмотреть список ВСЕХ активных форм и узнать, какие промежуточные формы "
+"надо заполнить и сохранить, чтобы получить доступ к нужной форме."
+msgstr ""
+
+#: templates/lkregistration/start_working.html:44
+msgid ""
+"Подраздел <b>«Принятые формы»</b> разделен на \"Активные\" (в них можно "
+"вносить любые изменения) и \"Архив\". Если на форму есть ответная реакция "
+"СУНЦ — объявлены результаты экзаменов, утверждены списки приглашённых на "
+"мероприятие, стали доступны для загрузки дипломы и т.п. — за названием формы "
+"появится ссылка \"Результаты\"."
+msgstr ""
+
+#: templates/lkregistration/start_working.html:45
+msgid ""
+"Когда Вы сохраняете форму первый раз, то <i>регистрируете</i> ее. В разделе "
+"<b>«Формы, доступные для регистрации»</b> ссылка в крайней правой колонке "
+"позволяет отменить регистрацию любой активной формы (кроме управляющей)."
+msgstr ""
+
+#: templates/lkregistration/start_working.html:47
+msgid "Назад"
+msgstr ""
+
+#~ msgid ""
+#~ "Нажимая «Зарегистрироваться», вы соглашаетесь на обработку всех вносимых "
+#~ "в Личный Кабинет персональных данных с целью ведения СУНЦ МГУ уставной "
+#~ "деятельности и в порядке, установленном законодательством Российской "
+#~ "Федерации. А также разрешаете использовать в качестве общедоступных "
+#~ "персональных данных Вашу фамилию, имя, отчество, дату рождения и "
+#~ "результаты различных проводимых СУНЦ МГУ олимпиад, конкурсов и "
+#~ "вступительных испытаний."
+#~ msgstr ""
+#~ "By clicking on 'Submit', you agree to the processing of all personal data "
+#~ "entered into the Personal Cabinet for the purpose of maintaining the AESC "
+#~ "MSU statutory activities and in the manner prescribed by the laws of the "
+#~ "Russian Federation. And also you allow to use your last name, first name, "
+#~ "patronymic, date of birth and the results of various Olympiads, contests "
+#~ "and introductory tests conducted by AESC MSU as public data."
+
+#~ msgid ""
+#~ "\t\t\t\t\n"
+#~ "<p style=\"text-align: center;\"><strong>Создание своего Личного кабинета "
+#~ "позволит вам</strong></p>\n"
+#~ "\n"
+#~ "\t         - подавать заявки на участие в различных проектах и "
+#~ "мероприятиях, проводимых СУНЦ МГУ: Летние школы, экзамены, Интернет-"
+#~ "олимпиады, Заочная школа и другие</li>\n"
+#~ "\t<br><br> - участвовать в отборочном туре Интернет-олимпиады, в заочном "
+#~ "отборочном тестировании в Заочную школу или перед экзаменами и т.п.</li>\n"
+#~ "\t<br><br> - получать электронные дипломы, свидетельства и т.п.</li>\n"
+#~ "\t<br><br> - получать более детальную информацию о своих результатах, по "
+#~ "сравнению с публикуемой на сайте</li>\n"
+#~ "\t<br><br> - подтверждать свой приезд в Летнюю школу и на учебу в СУНЦ "
+#~ "МГУ и т.д.</li>\n"
+#~ "\t<br><br> - задавать вопросы различной тематики и получать ответы на "
+#~ "указанную при регистрации электронную почту</li>\n"
+#~ "\t<br><br> - получать на электронную почту рассылки и напоминания по "
+#~ "выбранным темам </li>\n"
+#~ msgstr "Some info about PC will be here soon."
+
+#~ msgid ""
+#~ "\t\t\t\t\n"
+#~ "<p style=\"text-align: center;\"><strong>При регистрации обратите "
+#~ "внимание на</strong></p>\n"
+#~ "\n"
+#~ " - <b>электронную почту</b>\n"
+#~ "<br>На неё придет автоматическое письмо со ссылкой для завершения "
+#~ "регистрации. \n"
+#~ "<br>Также на неё будут приходить все информационные письма и ответы на "
+#~ "задаваемые вами вопросы.<br><br> \n"
+#~ "\n"
+#~ " - <b>персональные данные (ФИО и дата рождения)</b>\n"
+#~ "<br>В дальнейшем вы не сможете их самостоятельно изменить. Корректные "
+#~ "персональные данные необходимы для идентификации пользователя при участии "
+#~ "в любых мероприятиях СУНЦ.<br><br>\n"
+#~ "\n"
+#~ "<p><img src=\"/static/img/attencion.png\">Если Вы уже регистрировались, "
+#~ "но что-то пошло не так -<br>забыли пароль или логин, указали неверные "
+#~ "данные, заполнили неправильную анкету и т.п. - не пытайтесь "
+#~ "регистрироваться заново, пожалуйста. Напишите в техподдержку (<i><a href="
+#~ "\"mailto:lksunc@gmail.com\">lksunc@gmail.com</a></i>), мы обязательно что-"
+#~ "нибудь придумаем. </p>\n"
+#~ msgstr ""
+#~ "If something go wrong please contact support on email <i><a href=\"mailto:"
+#~ "lksunc@gmail.com\">lksunc@gmail.com</a></i>"
+
+#~ msgid ""
+#~ "\t\t\t\t\n"
+#~ "    При входе в свой Личный кабинет Вы попадаете на главную страницу - "
+#~ "«Начало». \n"
+#~ "\tОна состоит из трех основных разделов:\n"
+#~ "    <ul><li>Мои формы (обсуждается подробно ниже)</li>\n"
+#~ "\t<li>Обратная связь (вопросы пользователей)</li>\n"
+#~ "\t<li>Мой профиль (данные, указанные при регистрации - не подлежат "
+#~ "самостоятельному редактированию, при необходимости обращайтесь в "
+#~ "техподдержку)</li></ul>\n"
+#~ "\tРаздел <b>«Мои формы»</b> состоит из трёх основных подразделов:\n"
+#~ "    <ul><li>Формы, доступные для регистрации</li>\n"
+#~ "\t<li>Структура доступности активных на данный момент форм</li>\n"
+#~ "    <li>Принятые формы (заполненные Вами анкеты и заявления)</li></ul>\n"
+#~ "\tНавигация между разделами Личного кабинета осуществляется с помощью "
+#~ "меню, расположенного в верхней части страниц:  <span style=\"font-size: "
+#~ "11px;\">Начало>…</span> .\n"
+#~ "\t<br><br>\n"
+#~ "<p style=\"text-align: center;font-size: 14px;\">Выбор \"управляющей\" "
+#~ "анкеты</p>\t\n"
+#~ "    Первоначально в разделе <b>«Формы, доступные для регистрации»</b> Вам "
+#~ "доступно несколько анкет, определяющих различные категории \n"
+#~ "\tпользователей - так называемые \"управляющие\" анкеты. Из них "
+#~ "необходимо выбрать ту, которая соответствует Вашей ситуации (только "
+#~ "одну). \n"
+#~ "\t<br>Обратите особое внимание на номер класса и <i>учебный год</i> - они "
+#~ "могут не совпадать с текущими, но должны соответствовать "
+#~ "действительности.\n"
+#~ "    <br><br>\n"
+#~ "\tПосле внесения ответов на все обязательные вопросы нажмите \"Сохранить"
+#~ "\" в конце формы. Если всё в порядке, то на текущей странице Вы увидите \n"
+#~ "\tнадпись \"Изменения сохранены\", а также в подразделе «Принятые формы» "
+#~ "появится название-ссылка на заполненную анкету. \n"
+#~ "\t<br>Вы можете изменять свои ответы в управляющей анкете, однако не "
+#~ "сможете самостоятельно отменить регистрацию (в отличие от всех остальных "
+#~ "форм).\n"
+#~ "    <br><b>Если Вы перепутали и заполнили не ту управляющую анкету</b>, "
+#~ "пишите в службу техподдержки. \n"
+#~ "\t<br><br>\n"
+#~ "<p style=\"text-align: center;font-size: 14px;\">Работа с формами</p>\n"
+#~ "\n"
+#~ "             - После заполнения управляющей анкеты Вам станут доступны "
+#~ "формы (анкеты, заявления и т.п.), соответствующие выбранному статусу. </"
+#~ "li>\n"
+#~ "\t<br><br> - Пожалуйста, внимательно читайте \"Полное название формы\" и "
+#~ "\"Пояснение к форме\", прежде чем заполнять ее.\n"
+#~ "    <br><br> - Если Вы не можете найти необходимую форму, обратитесь к "
+#~ "разделу <b>«Структура доступности активных на данный момент форм»</b>. \n"
+#~ "\tОн позволяет просмотреть список ВСЕХ активных форм и узнать, какие "
+#~ "промежуточные формы надо заполнить и сохранить, чтобы получить доступ к "
+#~ "нужной форме.\n"
+#~ "    <br><br> - Подраздел <b>«Принятые формы»</b> разделен на \"Активные"
+#~ "\" (в них можно вносить любые изменения) и \"Архив\". Если на форму есть "
+#~ "ответная реакция \n"
+#~ "\tСУНЦ — объявлены результаты экзаменов, утверждены списки приглашённых "
+#~ "на мероприятие, стали доступны \n"
+#~ "\tдля загрузки дипломы и т.п. — за названием формы появится ссылка "
+#~ "\"Результаты\".\n"
+#~ "    <br><br> - Когда Вы сохраняете форму первый раз, то <i>регистрируете</"
+#~ "i> ее. В разделе <b>«Формы, доступные для регистрации»</b> ссылка в "
+#~ "крайней \n"
+#~ "\tправой колонке позволяет отменить регистрацию любой активной формы "
+#~ "(кроме управляющей).\n"
+#~ msgstr "Some very usefull info will be here soon."

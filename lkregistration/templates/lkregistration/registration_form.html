@@ -1,0 +1,53 @@
+﻿{% extends "lkforms/base.html" %}
+{% load i18n %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/login.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/my.css" />
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="/lk/">{% trans 'Начало' %}</a>
+&rsaquo; {% trans 'Регистрация' %}
+</div>
+{% endblock %}
+
+{% block content %}
+<body class="login">
+	<div id="mycontainer">
+
+		<div id="content" class="colM">
+			{% if form.errors %}
+				<p class="errornote">{% trans 'Пожалуйста, исправьте ошибки ниже.' %}</p>
+			{% endif %}
+			{% if form.non_field_errors %}
+				{% for error in form.non_field_errors %}
+					<p class="errornote">{{ error }}</p>
+				{% endfor %}
+			{% endif %}
+			<div id="content-main">
+<p style="text-align: center;"><b>{% trans 'Регистрация' %}</b> ({% trans 'все поля обязательны для заполнения' %})</p>
+<br>
+				<form method="post" action="">
+					<dl class="register">
+						{% for field in form %}
+							<dt>{{ field.label_tag }}</dt>
+							<dd class="clearfix">{{ field }}
+								{% if field.help_text %}<div class="clearfix">{{ field.help_text }}</div>{% endif %}
+								{% if field.errors %}<div class="myerrors clearfix">{{ field.errors }}</div>{% endif %}
+							</dd>
+							<br>
+						{% endfor %}
+					</dl>
+					<p>{% trans 'Нажимая кнопку "Зарегистрироваться", Вы соглашаетесь с Положением об обработке персональных данных в МГУ имени М.В. Ломоносова. <br>С полным текстом положения об обработке персональных данных в МГУ имени М.В. Ломоносова можно ознакомиться на странице' %} <a href="http://internat.msu.ru/privacy-policy/">http://internat.msu.ru/privacy-policy/</a>.
+					</p>
+					<input type="submit" value="{% trans 'Зарегистрироваться' %}" / class="clearfix">
+				</form>
+			</div>
+			<br class="clear" />
+		</div>
+	</div>
+</body>
+{% endblock %}

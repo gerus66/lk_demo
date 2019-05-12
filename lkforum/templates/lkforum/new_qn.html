@@ -1,0 +1,68 @@
+﻿{% extends "lkforms/base.html" %}
+{% load i18n admin_urls admin_static admin_modify %}
+
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+{{ media }}
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+<link rel="stylesheet" type="text/css" href="/static/css/my.css" />{% endblock %}
+
+{% block coltype %}colM{% endblock %}
+
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs"><a href="{% url 'index' %}">Начало</a>
+&rsaquo; <a href="{% url 'lkforum:app_index' %}">Обратная связь</a> 
+&rsaquo; Задать вопрос</div>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+	<p class="at-info">{{ txt }}</p>
+	<form method="post" >
+	{% csrf_token %}
+	<div>
+		<fieldset class="module">
+			<div class="form-row row1">
+				<div><b>Убедительная просьба</b>
+				    <br>
+					<br>- просмотреть <a href="{% url 'lkforum:topics' %}">ранее заданные вопросы</a>, во избежание повторов
+					<br>
+					<br>- правильно выбрать тему вопроса (разные темы отслеживаются разными сотрудниками, и неверный выбор сильно удлинит Ваше ожидание ответа)
+					<br>
+					<br>- подходить обдуманно к тому, задаете Вы «Личный» (доступный для просмотра только Вам) или общедоступный вопрос; в любом случае, адресат вопроса оставляет за собой право сделать общедоступный вопрос личным (наоборот - нет)
+					<br>
+					<br>- <a href="{% url 'lkforum:my_qns' %}">удалить вопрос</a>, если он потерял для Вас актуальность до того, как на него получен ответ
+				</div>
+			</div>
+			<div class="form-row">
+				<div>
+					<label><span class='at-info'>*</span>Тема</label>
+						<br><select name="t">
+						<option></option>
+						{% for t in ts %} <option {% if t.name == tp %} selected {% endif %}>{{ t.name }}</option>{% endfor %}
+						</select>
+				</div>
+			</div>
+			<div class="form-row row1">
+				<div>
+					<label><span class='at-info'>*</span>Вопрос</label>
+						<br><textarea name="q" cols="100" rows="3">{{ q }}</textarea>					
+				</div>
+			</div>
+			<div class="form-row">
+				<div>
+					<label><input type="checkbox" {% if priv %} checked=ckecked {% endif %} name="priv">Личный</label>
+				</div>
+			</div>
+		</fieldset>
+		<div class="submit-row">
+			<input type="submit" value="Задать вопрос" class="default" name="_save" />
+		</div>
+	</div>
+	</form>
+</div>
+{% endblock %}

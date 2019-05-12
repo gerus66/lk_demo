@@ -1,0 +1,77 @@
+﻿{% extends "lkforms/base.html" %}
+{% load i18n admin_urls admin_static admin_list %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}" />
+  {% if cl.formset %}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+  {% endif %}
+  {% if cl.formset or action_form %}
+    <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+  {% endif %}
+  {{ media.css }}
+  {% if not actions_on_top and not actions_on_bottom %}
+    <style>
+      #changelist table thead th:first-child {width: inherit}
+    </style>
+  {% endif %}
+  <link rel="stylesheet" type="text/css" href="/static/css/my.css" />
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+{{ media.js }}
+{% if action_form %}{% if actions_on_top or actions_on_bottom %}
+<script type="text/javascript">
+(function($) {
+    $(document).ready(function($) {
+        $("tr input.action-select").actions();
+    });
+})(django.jQuery);
+</script>
+{% endif %}{% endif %}
+{% endblock %}
+
+{% block bodyclass %}change-list{% endblock %}         <!-- style -->
+
+{% block breadcrumbs %}
+<div class="breadcrumbs"><a href="{% url 'index' %}">Начало</a>
+&rsaquo; <a href="{% url 'lkforum:app_index' %}">Обратная связь</a> 
+&rsaquo; <a href="{% url 'lkforum:topics' %}">Вопросы в общем доступе</a>
+&rsaquo; {{ t }}</div>
+{% endblock %}
+
+{% block coltype %}flex{% endblock %}       <!-- style -->
+
+{% block content %}
+<div id="content-main">
+	<p class="paginator"><a href='{% url "lkforum:new_qn" %}'><b>Задать вопрос (только для зарегистрированных пользователей)</b></a></p>
+	{% if fl %}
+		<p class="paginator"><a href='{% url "lkforum:topics" %}'><b>Вопросы по темам</b></a></p>
+	{% else %}
+		<p class="paginator"><a href='{% url "lkforum:topic" 0 %}'><b>Все вопросы</b></a></p>
+	{% endif %}
+    <div class="module" id="changelist">		
+        <form id="changelist-form">
+	    {% csrf_token %}
+		<div class="results">
+			<table id="result_list">
+			<thead>
+				<tr><th scope="col"><div class="text"><span>Вопрос</span></div><div class="clear"></div></th>
+				    <th scope="col"><div class="text"><span>Ответ</span></div><div class="clear"></div></th></tr>
+			</thead>
+			<tbody>				
+			{% for qa in qas %}
+				<tr class="{% cycle 'row1' 'row2' %}" >
+				    <td>{{ qa.id }}. {{ qa.question }}<br>{{ qa.created }}{% if fl %}<br>(<a href='{% url "lkforum:topic" qa.topic.id %}'>{{ qa.topic }}</a>){% endif %}</td>
+					<td>{{ qa.answer|safe|urlize }}{% if qa.answer %}<br>({{ qa.receiver.user.profile.all.0.sname }} {{ qa.receiver.user.profile.all.0.name }} {{ qa.receiver.user.profile.all.0.pname }}, {{ qa.receiver }}){% endif %}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+			</table>
+		</div>
+        </form>
+    </div>
+</div>
+{% endblock %}

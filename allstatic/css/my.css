@@ -1,0 +1,71 @@
+.reg {
+    text-align: center;
+    padding-top: 20;
+}
+
+.reg a {
+    text-decoration: underline;
+}
+
+.at {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+#mycontainer {
+    background: white;
+    border: 1px solid #ccc;
+    width: 50em;
+    min-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input[type='text'], input[type='email'], input[type='password'] {
+    width: 300px;
+}
+
+#content-related-2 {
+float: right;
+width: 18em;
+position: relative;
+margin-right: -38em;
+}
+
+dd ul li {
+    list-style-type: none;
+}
+
+.at-info {
+    font-weight: bold;
+    color: red;
+}
+
+.atback {
+    background: #F7C7AA
+
+}
+
+.right {
+    text-align: left;
+}
+
+.quiet-header {
+    color: #FA984C !important;
+    font-weight: normal !important;
+    font-size: 14px;
+}
+
+.quiet-header a {
+    text-decoration: none;
+    color: #FA984C !important;
+    font-weight: normal !important;
+    font-size: 14px;
+}
+
+.off {
+    display : none;
+}
+

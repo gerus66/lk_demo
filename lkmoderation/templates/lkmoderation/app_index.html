@@ -1,0 +1,26 @@
+﻿{% extends "lkforum/base.html" %}
+{% load i18n admin_static %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />
+<link rel="stylesheet" type="text/css" href="/static/css/my.css" />{% endblock %}
+
+{% block coltype %}colMS{% endblock %}   <!-- style -->
+
+{% block bodyclass %}dashboard{% endblock %}      <!-- style -->
+
+{% block breadcrumbs %}
+<div class="breadcrumbs"><a href="{% url 'index' %}">Начало</a>
+&rsaquo; Модерация</div>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+	<div class='module'>
+		<table>
+		<caption><a href="" class="section">Модерация</a></caption>
+		<tr><th><a href='{% url 'lkmoderation:modform' %}'>Формы (ожидают модерации: {{ form_mod_count }})</a></th><td>&nbsp;</td><td>&nbsp;</td></tr>
+		<tr><th><a href='{% url 'lkmoderation:modqn' %}'>Вопросы (ожидают модерации: {{ qn_mod_count }})</a></th><td>&nbsp;</td><td>&nbsp;</td></tr>
+		</table>
+	</div>
+</div>
+{% endblock %}

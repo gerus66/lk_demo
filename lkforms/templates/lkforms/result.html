@@ -1,0 +1,37 @@
+﻿{% extends "lkforms/base.html" %}
+{% load i18n admin_urls admin_static admin_modify %}
+
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+{{ media }}
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}" />
+<link rel="stylesheet" type="text/css" href="/static/css/my.css" />{% endblock %}
+
+{% block coltype %}colM{% endblock %}
+
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs"><a href="{% url 'index' %}">Начало</a>
+&rsaquo; <a href="{% url 'lkforms:forms' %}">Мои формы</a> 
+&rsaquo; Результаты
+&rsaquo; {{ r.form.name }} ({{ r.form.full_name }})</div>
+{% endblock %}
+
+
+{% block content %}
+<div id="content-main">
+    {% for rr in user.profile.all.0.regres_profile.all %}
+        {% if rr.form == r.form and rr.is_checkin %}
+            <div>{{ r.detail_result|safe }}</div>
+        {% endif %}
+    {% endfor %}
+    {% for arr in user.profile.all.0.archregres_profile.all %}
+        {% if arr.form == r.form and arr.is_checkin %}
+            <div>{{ r.detail_result|safe }}</div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}
