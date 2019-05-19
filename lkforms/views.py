@@ -20,6 +20,7 @@ from django.utils.translation import ugettext as _
 
  
 base_forms = [72, 73, 74, 75, 76, 87, 95, 96, 113, 143, 157, 158, 159, 160, 161, 162, 189, 262]
+all_classes = [262, 95, 72, 73, 74, 75, 76]
 
 # 8, 68, 83, 84, 234 - disk
 # 135, 64, 65, 131 - zash last year
@@ -144,6 +145,31 @@ def form(req, form_id):
                     RegRes.objects.create(user=user, form=form, is_checkin=True)
                 if form.result and form.last_res_publication:
                     make_result(form.result.name[form.result.name.find('/')+1:])
+                if form.id in all_classes:
+                    if form_id == '76':
+                        user.year = 2019
+                    else:
+                        if form_id == '75':
+                            user.year = 2020
+                        else:
+                            if form_id == '74':
+                                user.year = 2021
+                            else:
+                                if form_id == '73':
+                                    user.year = 2022
+                                else:
+                                    if form_id == '72':
+                                        user.year = 2023
+                                    else:
+                                        if form_id == '95':
+                                            user.year = 2024
+                                        else:
+                                            user.year = 2100
+                    user.save()
+                else:
+                    if form.id in base_forms:
+                        user.year = 1900
+                        user.save()
            #     if form_id=='288' or form_id=='289' or form_id=='290' or form_id=='294' or form_id=='295' or form_id=='296':
             #        anketa(req.user.id, form_id)
             else:
