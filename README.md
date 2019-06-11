@@ -1,6 +1,6 @@
 ## Личный кабинет СУНЦ МГУ
 
-Python 2.7 / Django 1.6.11 / MySQL
+Python 2.7 / Django 1.7.11 / MySQL
 
 ### Приложения Django
 ### forms
